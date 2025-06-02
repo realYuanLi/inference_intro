@@ -17,7 +17,7 @@ def load_questions():
             ])
     return repeated_questions
 
-def process_outputs(outputs):
+def process_outputs(outputs, questions):
     processed_results = {}
     for i, output in enumerate(outputs):
         # output is a RequestOutput object
