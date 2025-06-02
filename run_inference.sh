@@ -17,6 +17,7 @@ SCRIPT_DIR="/mnt/weka/home/liyuan/inference_intro"
 source ~/miniconda3/etc/profile.d/conda.sh
 conda activate inference_env  # Change <env_name> to your environment name
 
+mkdir -p "$SCRIPT_DIR/outputs"
 # Set up per-process HuggingFace cache in your home directory
 # This avoids permission issues and ensures the cache is in a writable location.
 export HF_HOME=~/hf_cache_$(hostname)_$SLURM_PROCID
