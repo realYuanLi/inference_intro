@@ -10,25 +10,28 @@
 #SBATCH --exclusive
 
 # Get the directory of this script
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+# This ensures SCRIPT_DIR is always the absolute path where this .sh file resides
+SCRIPT_DIR="/mnt/weka/home/liyuan/inference_intro" 
 
 # Load your Conda setup and activate environment
 source ~/miniconda3/etc/profile.d/conda.sh
 conda activate inference_env  # Change <env_name> to your environment name
 
-# Set up per‐process HuggingFace cache (to avoid clashes across GPUs)
-export HF_HOME=${SCRIPT_DIR}/hf_cache_$(hostname)_$SLURM_PROCID
-mkdir -p $HF_HOME
+# Set up per-process HuggingFace cache in your home directory
+# This avoids permission issues and ensures the cache is in a writable location.
+export HF_HOME=~/hf_cache_$(hostname)_$SLURM_PROCID
+mkdir -p "$HF_HOME" # Use quotes for safety, though not strictly necessary here
 
 # (Optional) Triton cache dir if vLLM uses it
 export TRITON_HOME=${SCRIPT_DIR}/triton_cache
-mkdir -p $TRITON_HOME
+mkdir -p "$TRITON_HOME" # Use quotes for safety
 
-# Move to directory containing generate_response.py
-cd $SCRIPT_DIR
+# No need to 'cd' here, as we will use the full path for the Python script.
 
-srun --cpu-bind=none python generate_response.py \
-     --model_path ../checkpoints/Qwen3-0.6B \
+# Execute the Python script using its full absolute path
+# This ensures the script is found regardless of the current working directory.
+srun --cpu-bind=none python "$SCRIPT_DIR/generate_response.py" \
+     --model_path "$SCRIPT_DIR/checkpoints/Qwen3-0.6B" \
      --model_name Qwen3-0.6B \
      --tensor_parallel_size 8 \
-     --output_dir outputs 
+     --output_dir "$SCRIPT_DIR/outputs"

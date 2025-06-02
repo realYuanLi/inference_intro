@@ -1,9 +1,0 @@
-/var/spool/slurmd/job168636/slurm_script: line 15: /var/spool/slurmd/job168636/../miniconda3/etc/profile.d/conda.sh: No such file or directory
-
-CondaError: Run 'conda init' before 'conda activate'
-
-mkdir: cannot create directory ‘/var/spool/slurmd/job168636/../hf_cache_fs-mbz-gpu-411_0’: Permission denied
-mkdir: cannot create directory ‘/var/spool/slurmd/job168636/../triton_cache’: Permission denied
-/var/spool/slurmd/job168636/slurm_script: line 27: cd: /var/spool/slurmd/job168636/../inference_intro: No such file or directory
-/mnt/weka/home/liyuan/miniconda3/envs/inference_env/bin/python: can't open file '/var/spool/slurmd/job168636/../inference_intro/generate_response.py': [Errno 2] No such file or directory
-srun: error: fs-mbz-gpu-411: task 0: Exited with exit code 2
