@@ -57,11 +57,11 @@ This is a minimal (non-optimal, a bit dumb, but beginner-friendly) example for m
 
 - The generated responses will be saved in:
   ```
-  ../outputs/Qwen3-0.6B.json
+  inference_intro/outputs/Qwen3-0.6B.json
   ```
 - SLURM logs will be saved in:
   ```
-  ../logs/stdout/
+  inference_intro/logs/stdout/
   ```
 
 In the log file, you will see the model being loaded within minutes, and start to generate responses.
@@ -70,13 +70,15 @@ In the log file, you will see the model being loaded within minutes, and start t
 
 ```
 inference_intro/
-├── IQ_inference.sh
-├── requirements.txt
+├── run_inference.sh
 ├── readme.md
 ├── generate_response.py
 ├── testing_data.json
-├── ../checkpoints/Qwen3-0.6B/
-├── ../logs/stdout/
+├── outputs/
+│   └── Qwen3-0.6B.json
+├── logs/
+│   └── stdout/
+├── ../models/Qwen3-0.6B/
 ```
 
 ## References

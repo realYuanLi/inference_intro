@@ -1,0 +1,2 @@
+/var/spool/slurmd/job168641/slurm_script: line 17: syntax error near unexpected token `newline'
+/var/spool/slurmd/job168641/slurm_script: line 17: `conda activate <env_name>  # Change <env_name> to your environment name'
